@@ -5,7 +5,7 @@ wow73611/python-rt
 
 It can automatically bundle a Python application and its dependencies with a single line Dockerfile.
 
-It is based on wow73611/python base image.
+It is based on [`wow73611/python`](https://index.docker.io/u/wow73611/python) base image.
 
 ## Usage
 
