@@ -1,8 +1,8 @@
 FROM wow73611/ubuntu
 MAINTAINER wow73611 <wow73611@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV OPENRESTY_VERSION 1.7.7.2
+ENV NGINX_WORKDIR /usr/local/openresty/nginx
 
 RUN \
   apt-get update -y && \
@@ -18,11 +18,12 @@ RUN \
   make && \
   make install && \
   cd .. && \
-  rm -rf ngx_openresty-*
+  rm -rf ngx_openresty-* && \
+  rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/local/openresty/nginx
-ADD nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
-ENV PATH /usr/local/openresty/nginx/sbin:$PATH
+WORKDIR $NGINX_WORKDIR
+ADD nginx.conf $NGINX_WORKDIR/conf/nginx.conf
+ENV PATH $NGINX_WORKDIR/sbin:$PATH
 
 EXPOSE 80
-CMD ["nginx","-c","conf/nginx.conf"]
+CMD ["nginx","-c","$NGINX_WORKDIR/conf/nginx.conf"]
