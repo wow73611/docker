@@ -20,3 +20,5 @@ Python is an interpreted, interactive, object-oriented, open-source programming 
 
         docker run -it --rm wow73611/python
 
+        docker run -it --rm wow73611/python python
+

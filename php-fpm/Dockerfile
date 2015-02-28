@@ -28,5 +28,7 @@ ADD fpm/www.conf /etc/php5/fpm/pool.d/www.conf
 
 WORKDIR /var/www/html
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
 EXPOSE 80
+
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

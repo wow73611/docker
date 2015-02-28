@@ -7,5 +7,5 @@ RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/superviso
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 80
-CMD ["/usr/bin/supervisord"]
 
+CMD ["/usr/bin/supervisord"]

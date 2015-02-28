@@ -9,5 +9,7 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 ADD haproxy.cfg /etc/haproxy/haproxy.cfg
-CMD ["haproxy","-f","/etc/haproxy/haproxy.cfg"]
+
 EXPOSE 80
+
+CMD ["haproxy","-f","/etc/haproxy/haproxy.cfg"]

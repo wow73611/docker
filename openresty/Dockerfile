@@ -12,12 +12,12 @@ RUN \
 RUN \
   wget http://openresty.org/download/ngx_openresty-$OPENRESTY_VERSION.tar.gz && \
   tar -zxf ngx_openresty-*.tar.gz && \
-  rm  -f ngx_openresty-*.tar.gz && \
   cd ngx_openresty-* && \
   ./configure --with-luajit --with-pcre-jit && \
   make && \
   make install && \
   cd .. && \
+  rm  -f ngx_openresty-*.tar.gz && \
   rm -rf ngx_openresty-* && \
   rm -rf /var/lib/apt/lists/*
 
@@ -26,4 +26,5 @@ ADD nginx.conf $NGINX_WORKDIR/conf/nginx.conf
 ENV PATH $NGINX_WORKDIR/sbin:$PATH
 
 EXPOSE 80
+
 CMD ["nginx","-c","$NGINX_WORKDIR/conf/nginx.conf"]

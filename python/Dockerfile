@@ -9,4 +9,4 @@ RUN \
 RUN pip install --upgrade pip
 RUN pip install virtualenv
 
-CMD ["/bin/bash"]
+CMD ["bash"]

@@ -1,15 +1,17 @@
 FROM wow73611/ubuntu
 MAINTAINER wow73611 <wow73611@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN \
   add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
-  chown -R www-data:www-data /var/lib/nginx
+  rm -rf /var/lib/apt/lists/*
 
-WORKDIR /etc/nginx
+RUN \
+  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
+  mkdir -p /var/www/html && \
+  chown -R www-data:www-data /var/www/html
+
 EXPOSE 80
-CMD ["nginx"]
+
+CMD ["nginx","-c","/etc/nginx/nginx.conf"]
