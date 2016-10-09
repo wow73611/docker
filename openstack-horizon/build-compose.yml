@@ -1,0 +1,30 @@
+version: '2'
+services:
+  horizon-base:
+    image: horizon-base
+    build:
+      context: ./base
+      dockerfile: Dockerfile
+      args:
+        PASSWORD: root
+
+  horizon-mitaka:
+    image: horizon-mitaka
+    build:
+      context: ./horizon
+      dockerfile: Dockerfile
+      args:
+        HORIZON_BRANCH: stable/mitaka
+        APACHE_PORT: 8002
+        MEMCACHE_PORT: 11212
+
+  horizon-newton:
+    image: horizon-newton
+    build:
+      context: ./horizon
+      dockerfile: Dockerfile
+      args:
+        HORIZON_BRANCH: stable/newton
+        APACHE_PORT: 8003
+        MEMCACHE_PORT: 11213
+

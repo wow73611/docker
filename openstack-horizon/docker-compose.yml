@@ -1,0 +1,8 @@
+version: '2'
+services:
+  mitaka:
+    image: horizon-mitaka
+    network_mode: "host"
+  newton:
+    image: horizon-newton
+    network_mode: "host"
